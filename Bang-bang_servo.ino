@@ -1,11 +1,15 @@
  /* Basic bang-bang control plant for DC motor positional control
-  *  Arsenio Dev 
   *  12-7-2016
-  *  Beerware license: If you use this code and we cross paths, you owe me a beer or food :P 
-  *  Please remember to attribute, thanks!
+ * ----------------------------------------------------------------------------
+ * "THE BEER-WARE LICENSE" (Revision 42):
+ * Arsenio Dev wrote this file.  As long as you retain this notice you
+ * can do whatever you want with this stuff. If we meet some day, and you think
+ * this stuff is worth it, you can buy me a beer in return.   
+ * ----------------------------------------------------------------------------
   *  tminusarduino.blogspot.com
   *  @ascii211
   */
+  
  int val; 
  int encoder0PinA = 3; //interrupt pin 0 
  int encoder0PinB = 4; //interrrupt pin 1
