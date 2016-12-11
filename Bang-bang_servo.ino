@@ -46,7 +46,6 @@ void move_dir(int dir) { //Add functionality for telling motor to move at full s
 }
 
  void loop() { 
-  int val = 
   if (encoder0Pos < Target) { //if not there yet, keep going
     move_dir(LEFT);
   } else if (encoder0Pos > Target) { //if overshoot, go back
