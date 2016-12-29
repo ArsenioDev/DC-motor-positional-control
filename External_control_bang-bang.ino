@@ -16,7 +16,7 @@
  int encoder0Pos = 0; //initial encoder count on reset
  int encoder0PinALast = LOW; //assume leading signal is low
  int n = LOW;
- int Trgt = 300; //Setpoint
+ int Trgt = 300; //Setpoint range
 int STBY = 10; //standby
 int PWMA = 6; //Speed control 
 int AIN1 = 8; //Direction
