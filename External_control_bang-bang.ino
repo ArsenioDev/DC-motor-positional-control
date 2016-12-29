@@ -11,13 +11,13 @@
   */
   
  int val; 
- int encoder0PinA = 3; //interrupt pin 0 
- int encoder0PinB = 4; //interrrupt pin 1
+ int encoder0PinA = 2; //interrupt pin 0 
+ int encoder0PinB = 3; //interrrupt pin 1
  int encoder0Pos = 0; //initial encoder count on reset
  int encoder0PinALast = LOW; //assume leading signal is low
  int n = LOW;
+ int Trgt = 300; //Setpoint
 int STBY = 10; //standby
-//Motor A
 int PWMA = 6; //Speed control 
 int AIN1 = 8; //Direction
 int AIN2 = 9; //Direction
@@ -25,7 +25,7 @@ int AIN2 = 9; //Direction
 
  #define LEFT 1 //Defining direction control for motor driver tb6612fng 
  #define RIGHT 0
- #define Trgt A0
+ #define Set A0 //analog pin for setpoint potentiometer
  
 
  void setup() { //Straightforward setup, self explanatory
@@ -38,7 +38,7 @@ int AIN2 = 9; //Direction
    pinMode(PWMA, OUTPUT);
    pinMode(AIN1, OUTPUT);
    pinMode(AIN2, OUTPUT);
-   pinMode(Trgt, INPUT);
+   pinMode(Set, INPUT);
  } 
 
 void move_dir(int dir) { //Add functionality for telling motor to move at full speed in direction
@@ -48,25 +48,15 @@ void move_dir(int dir) { //Add functionality for telling motor to move at full s
 }
 
  void loop() { 
-  int Target = map(analogRead(Trgt),0, 1024, 0, 300); //map analog read value to range of counts 0-300
+  int Target = map(analogRead(Set),0, 1024, 0, Trgt); //map analog read value to range of counts 0-300
   if (encoder0Pos < Target) { //if not there yet, keep going
     move_dir(LEFT);
   } else if (encoder0Pos > Target) { //if overshoot, go back
     move_dir(RIGHT);
   }
-  Serial.println(Target);
-  //Serial.println (encoder0Pos, DEC);
-  /*n = digitalRead(encoder0PinA);
-   if ((encoder0PinALast == LOW) && (n == HIGH)) {
-     if (digitalRead(encoder0PinB) == LOW) {
-       encoder0Pos--;
-     } else {
-       encoder0Pos++;
-     }
-     Serial.println(encoder0Pos);
-   } 
-   encoder0PinALast = n;
-   */
+  Serial.print(Target);// Prints target count
+  Serial.print(" ");
+  Serial.println(encoder0Pos); //Prints actual count
  }
  
 void move(int motor, int speed, int direction){
@@ -121,7 +111,6 @@ void doEncoderA(){
   }
   //Serial.println (encoder0Pos, DEC);          
   // use for debugging - remember to comment out
- 
 }
 
 void doEncoderB(){
