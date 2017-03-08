@@ -75,7 +75,7 @@ PID myPID(Input, Output, Setpoint, Kp, Ki, Kd, DIRECT);
 void Drive(int out) {              //Motor control section
   if (out > 0) {
     right();                    //Drive motor CW
-    analogWrite(PWMA, abs(out));
+    analogWrite(PWMA, -1*out));
   }
   else {
     left();                      //Drive motor CCW
