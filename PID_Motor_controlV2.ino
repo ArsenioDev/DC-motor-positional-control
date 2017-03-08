@@ -24,11 +24,11 @@
  int AIN2 = 9; //Direction
 
 
-double Input = 0, Output = 0, Setpoint = 0;
+int Input = 0, Output = 0, Setpoint = 0;
 
-double Kp=.5, Ki=1, Kd=1;
+int Kp=.5, Ki=1, Kd=1;
 
-PID myPID(&Input, &Output, &Setpoint, Kp, Ki, Kd, DIRECT);
+PID myPID(Input, Output, Setpoint, Kp, Ki, Kd, DIRECT);
 
 
  #define LEFT 1 //Defining direction control for motor driver tb6612fng 
