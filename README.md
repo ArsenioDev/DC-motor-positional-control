@@ -8,5 +8,7 @@ To use TB6612FNG in this manner, connect PWMA/B to VCC and drive INA/B with PWM.
 
 For Bang-Bang control, see the two bang bang files. 
 
+Eventually working towards removing the need for the PID library
+
 ![Driver](https://cdn.sparkfun.com//assets/parts/3/1/5/7/09457-01b.jpg "TB6612FNG motor driver")
 ![Example motor](http://www.cnclablb.com/storage/Products/Product10988/Photo_4613/Orig/_W4A0628-900x600.jpg "Example motor with encoder")
